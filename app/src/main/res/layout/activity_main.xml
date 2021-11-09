@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imgRandomMeal"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:onClick="onImageClick"
+        app:layout_constraintBottom_toTopOf="@+id/txtRandomName"
+        app:layout_constraintEnd_toEndOf="@+id/txtRandomName"
+        app:layout_constraintStart_toStartOf="@+id/txtRandomName"
+        app:layout_constraintTop_toBottomOf="@+id/txtAppName"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txtAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/app_name"
+        android:textSize="30sp"
+        android:elegantTextHeight="true"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imgRandomMeal"
+        app:layout_constraintEnd_toEndOf="@+id/imgRandomMeal"
+        app:layout_constraintStart_toStartOf="@+id/imgRandomMeal"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtRandomName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/txtRandomRecipe"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnRandomMore"
+        app:layout_constraintEnd_toEndOf="@+id/btnRandomMore"
+        app:layout_constraintStart_toStartOf="@+id/btnRandomMore"
+        app:layout_constraintTop_toBottomOf="@+id/imgRandomMeal" />
+
+    <Button
+        android:id="@+id/btnRandomMore"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:onClick="onRandomMoreClick"
+        android:text="@string/btnRandomRecipe"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAllMeals"
+        app:layout_constraintEnd_toEndOf="@+id/btnAllMeals"
+        app:layout_constraintStart_toStartOf="@+id/btnAllMeals"
+        app:layout_constraintTop_toBottomOf="@+id/txtRandomName" />
+
+    <Button
+        android:id="@+id/btnAllMeals"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:onClick="onAllMealsClick"
+        android:text="@string/btnAllMeals"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddRecipe"
+        app:layout_constraintEnd_toEndOf="@+id/btnAddRecipe"
+        app:layout_constraintStart_toStartOf="@+id/btnAddRecipe"
+        app:layout_constraintTop_toBottomOf="@+id/btnRandomMore" />
+
+    <Button
+        android:id="@+id/btnAddRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:onClick="onAddClick"
+        android:text="@string/btnAddRecipe"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnView"
+        app:layout_constraintEnd_toEndOf="@+id/btnView"
+        app:layout_constraintStart_toStartOf="@+id/btnView"
+        app:layout_constraintTop_toBottomOf="@+id/btnAllMeals" />
+
+    <Button
+        android:id="@+id/btnView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="onViewClick"
+        android:text="@string/btnMyRecipes"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddRecipe" />
+</androidx.constraintlayout.widget.ConstraintLayout>
