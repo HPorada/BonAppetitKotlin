@@ -1,4 +1,4 @@
 package com.example.bonappetitkotlin
 
-class MealUser {
+class MealUser: Meal() {
 }

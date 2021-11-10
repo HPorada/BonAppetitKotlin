@@ -1,4 +1,4 @@
 package com.example.bonappetitkotlin
 
-class Meal {
+open class Meal {
 }
