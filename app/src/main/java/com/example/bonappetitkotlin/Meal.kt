@@ -1,4 +1,6 @@
 package com.example.bonappetitkotlin
 
-open class Meal {
+abstract class Meal {
+
+    abstract fun getMealData();
 }
