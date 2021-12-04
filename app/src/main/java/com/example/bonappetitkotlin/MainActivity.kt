@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //createMealList()
+        createMealList()
 
         val randomRecipeImage = findViewById<View>(R.id.imgRandomMeal) as ImageView
         val randomRecipeName = findViewById<View>(R.id.txtRandomName) as TextView
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
 
     fun onImageClick(view: View?) {
         val intent = Intent(this, MealActivity::class.java)
-        //intent.putExtra("MealExtra", randomMeal)
+        intent.putExtra("MealExtra", randomMeal)
         startActivity(intent)
     }
 
@@ -144,12 +144,12 @@ class MainActivity : AppCompatActivity() {
                 Response.Listener { response ->
 
                     try {
-                        if (!response.equals("{\"meals\":null}")) {
+                        if (response != "{\"meals\":null}") {
                             jObject = JSONObject(response)
                             val jsonArray = jObject.getJSONArray("meals")
                             for (j in 0 until jsonArray.length()) {
                                 val x = jsonArray.getJSONObject(j)
-                                val meal: Meal = gson.fromJson(x.toString(), Meal::class.java)
+                                val meal: MealAPI = gson.fromJson(x.toString(), MealAPI::class.java)
                                 mealsAPI.add(meal)
 
                             }

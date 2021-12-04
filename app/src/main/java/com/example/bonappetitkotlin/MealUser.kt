@@ -6,7 +6,7 @@ class MealUser : Meal() {
     private val body: String? = null
 
 
-    override fun getMealData() {
+    override fun getMealData(): String {
         TODO("Not yet implemented")
     }
 

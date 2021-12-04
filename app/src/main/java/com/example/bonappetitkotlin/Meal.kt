@@ -1,10 +1,12 @@
 package com.example.bonappetitkotlin
 
-abstract class Meal {
+import java.io.Serializable
 
-    abstract fun getMealData();
+abstract class Meal : Serializable {
 
-    abstract  fun getStrMeal(): String?
+    abstract fun getMealData(): String;
+
+    abstract fun getStrMeal(): String?
 
     abstract fun getStrMealThumb(): String?
 }
