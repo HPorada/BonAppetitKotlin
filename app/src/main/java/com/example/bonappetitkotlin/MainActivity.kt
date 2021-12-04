@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.RequestQueue
+import com.android.volley.Response
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -17,45 +17,83 @@ import com.google.gson.GsonBuilder
 import com.squareup.picasso.Picasso
 import org.json.JSONException
 import org.json.JSONObject
-import java.io.BufferedReader
-import java.io.FileNotFoundException
-import java.io.FileReader
-import java.io.IOException
-import javax.xml.transform.ErrorListener
+
+// DONE:
+// Lists or Sets 2 - MainActivity (meals)
+// Interfaces 3 - OnItemClickListener
+// Abstract classes 3 - Meal
+// Inheritance 8 - Meal -> MealUser, MealAPI
+// Polymorphism 10 - MealUser, MealAPI (getMealData)
+// Data classes 3 - DataAPI
+
+
+// TODO
+// Type check and automatic cast 1
+// String templates 1 -> toast
+// When expression 1
+// Single-expression functions 1
+// Infix function 2
+// Nested functions 2
+// Operator overloading 3
+// Varargs 2
+// Spread operator 2
+// Maps 2
+// Sealed classes 3
+// Extension functions 3
+// Lazy properties 3
+// Delegations 8
+// Observable properties 8
+// Exceptions 5 -> try/catch przy łączeniu z api
+// Destructuring declarations 3 (do map)
+// Null safety 5 -> przy dodawaniu własnego przepisu, gdy niedodany jest tytuł, automatycznie "Przepis"
+// Save navigation operator 1
+// Elvis operator 1
+// Lambdas 10 -> sortowanie?
+// Object expressions 5
+// Companion object 3
+// Generics 8
 
 class MainActivity : AppCompatActivity() {
 
     val mealsAPI: ArrayList<Meal> = ArrayList<Meal>()
-    val randomMeal: Meal = MealAPI()
+    var randomMeal: Meal = MealAPI()
     var jObject: JSONObject = JSONObject()
     val mealsUser: ArrayList<Meal> = ArrayList<Meal>()
 
+    val data = DataAPI()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        createMealList()
-//        val randomRecipeImage =
-//            findViewById<View>(R.id.imgRandomMeal) as ImageView
-//        val randomRecipeName =
-//            findViewById<View>(R.id.txtRandomName) as TextView
-//        val url = "https://www.themealdb.com/api/json/v1/1/random.php"
-//        val queue: RequestQueue = Volley.newRequestQueue(this)
-//        val gson: Gson = GsonBuilder().setPrettyPrinting().create()
-//        val stringRequest = StringRequest(Request.Method.GET, url, { response ->
-//            val data: DataMeal = gson.fromJson(response, DataMeal::class.java)
-//            randomMeal = data.meals().get(0)
-//            randomRecipeName.setText(randomMeal.getStrMeal())
-//            Picasso.get()
-//                .load(randomMeal.getStrMealThumb())
-//                .into(randomRecipeImage)
-//        }, object : ErrorListener() {
-//            fun onErrorResponse(error: VolleyError?) {
-//                randomRecipeName.text = "That didn't work!"
-//            }
-//        })
-//        queue.add(stringRequest)
+        //createMealList()
+
+        val randomRecipeImage = findViewById<View>(R.id.imgRandomMeal) as ImageView
+        val randomRecipeName = findViewById<View>(R.id.txtRandomName) as TextView
+
+        val queue: RequestQueue = Volley.newRequestQueue(this@MainActivity)
+        val gson: Gson = GsonBuilder().setPrettyPrinting().create()
+
+        val stringRequest: StringRequest =
+            StringRequest(Request.Method.GET, data.randomURL, Response.Listener { response ->
+
+                //println(gson.toString())
+
+                val dataMeal: DataMeal = gson.fromJson(response, DataMeal::class.java)
+                randomMeal = dataMeal.getMealsList()!![0]
+                randomRecipeName.text = randomMeal.getStrMeal()
+                Picasso.get()
+                    .load(randomMeal.getStrMealThumb())
+                    .into(randomRecipeImage)
+
+            }, Response.ErrorListener {
+                fun onErrorResponse(error: VolleyError) {
+                    randomRecipeName.text = "That didn't work!"
+                }
+            }
+
+            )
+        queue.add(stringRequest)
     }
 
     fun onImageClick(view: View?) {
@@ -93,11 +131,46 @@ class MainActivity : AppCompatActivity() {
             "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
             "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
         )
-//        for (s in alphabet) {
-//            val url = "https://www.themealdb.com/api/json/v1/1/search.php?f=$s"
-//            val queue: RequestQueue = Volley.newRequestQueue(this)
-//            val gson: Gson = GsonBuilder().setPrettyPrinting().create()
-//            val stringRequest = StringRequest(Request.Method.GET, url, { response ->
+        for (s in alphabet) {
+
+            val url = "https://www.themealdb.com/api/json/v1/1/search.php?f=$s"
+
+            val queue: RequestQueue = Volley.newRequestQueue(this@MainActivity)
+            val gson: Gson = GsonBuilder().setPrettyPrinting().create()
+
+            val stringRequest = StringRequest(
+                Request.Method.GET, url,
+
+                Response.Listener { response ->
+
+                    try {
+                        if (!response.equals("{\"meals\":null}")) {
+                            jObject = JSONObject(response)
+                            val jsonArray = jObject.getJSONArray("meals")
+                            for (j in 0 until jsonArray.length()) {
+                                val x = jsonArray.getJSONObject(j)
+                                val meal: Meal = gson.fromJson(x.toString(), Meal::class.java)
+                                mealsAPI.add(meal)
+
+                            }
+                        }
+                    } catch (e: JSONException) {
+                        e.printStackTrace();
+                    }
+
+                },
+                Response.ErrorListener {
+                    fun onErrorResponse(error: VolleyError) {
+
+                    }
+                }
+            )
+            queue.add(stringRequest)
+        }
+    }
+
+
+//            } -> {
 //                try {
 //                    if (!response.equals("{\"meals\":null}")) {
 //                        jObject = JSONObject(response)
@@ -115,9 +188,9 @@ class MainActivity : AppCompatActivity() {
 //                fun onErrorResponse(error: VolleyError?) {}
 //            }
 //            )
-//            queue.add(stringRequest)
-//        }
-    }
+//queue.add(stringRequest)
+//}
+//}
 
     fun createRecipeList() {
 //        mealsUser.clear()

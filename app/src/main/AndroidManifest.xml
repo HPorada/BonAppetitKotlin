@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bonappetitkotlin">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="anroid.permission.READ_PRIVILEGED_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,6 +21,7 @@
         </activity>
         <activity android:name=".AddActivity"/>
         <activity android:name=".MealActivity"/>
+        <activity android:name=".MealsRecyclerActivity"/>
     </application>
 
 </manifest>

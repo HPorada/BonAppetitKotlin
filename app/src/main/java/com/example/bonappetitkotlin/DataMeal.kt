@@ -5,9 +5,9 @@ import java.util.*
 
 class DataMeal {
 
-    var meals: ArrayList<Meal>? = null
+    var meals: ArrayList<MealAPI>? = null
 
-    fun getMealsList(): ArrayList<Meal>? {
+    fun getMealsList(): ArrayList<MealAPI>? {
         return meals;
     }
 

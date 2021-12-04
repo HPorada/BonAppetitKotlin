@@ -62,5 +62,12 @@ class MealAPI : Meal() {
         TODO("Not yet implemented")
     }
 
+    override fun getStrMeal(): String? {
+        return strMeal
+    }
+
+    override fun getStrMealThumb(): String? {
+        return strMealThumb
+    }
 
 }

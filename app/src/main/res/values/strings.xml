@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">BonAppetitKotlin</string>
+    <string name="app_name">Bon Appétit</string>
+
+    <string name="txtRandomRecipe">Random recipe...</string>
+    <string name="btnRandomRecipe">Check the recipe</string>
+    <string name="btnAllMeals">Show all recipes</string>
+    <string name="btnAddRecipe">Add new recipe</string>
+    <string name="btnMyRecipes">Show my recipes</string>
+
+    <string name="txtHintSearch">Search...</string>
+    <string name="btnSearch">Search</string>
+
+    <string name="txtRecipeName">Recipe</string>
+    <string name="txtInstructions">Instructions...</string>
+
+    <string name="txtAddRecipe">Add your recipe</string>
+    <string name="txtHintName">Meal name</string>
+    <string name="txtHintInstructions">Ingredients, measures, instructions</string>
+    <string name="btnSave">Save the recipe</string>
 </resources>

@@ -9,4 +9,12 @@ class MealUser : Meal() {
     override fun getMealData() {
         TODO("Not yet implemented")
     }
+
+    override fun getStrMeal(): String? {
+        TODO("Not yet implemented")
+    }
+
+    override fun getStrMealThumb(): String? {
+        TODO("Not yet implemented")
+    }
 }

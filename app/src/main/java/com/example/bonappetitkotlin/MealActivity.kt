@@ -13,6 +13,7 @@ class MealActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meal)
+
         /*  val intent = intent
           val meal = getIntent().getSerializableExtra("MealExtra") as Meal?
           val name = findViewById<View>(R.id.txtMealName) as TextView
