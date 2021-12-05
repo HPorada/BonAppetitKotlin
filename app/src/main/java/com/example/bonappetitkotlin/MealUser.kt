@@ -15,6 +15,6 @@ class MealUser : Meal() {
     }
 
     override fun getStrMealThumb(): String? {
-        TODO("Not yet implemented")
+        return "R.drawable.spices"
     }
 }

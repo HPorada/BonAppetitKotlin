@@ -16,36 +16,44 @@ class MealActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meal)
 
-        meal = getIntent().getSerializableExtra("MealExtra") as Meal
+        meal = intent.getSerializableExtra("MealExtra") as Meal
+
+        val typeM: MealType<Meal> = MealType(meal)
+        val mealType = typeM.getClassType(meal)
 
         var name = findViewById<TextView>(R.id.txtMealName)
         var image = findViewById<ImageView>(R.id.imgRecipeImage)
         var instructions = findViewById<TextView>(R.id.txtMealInstructions)
 
-        name.text = meal.getStrMeal()
+        when(mealType){
+            "com.example.bonappetitkotlin.MealAPI" -> {
+                name.text = meal.getStrMeal()
 
-        Picasso.get()
-            .load(meal.getStrMealThumb())
-            .resize(250,250)
-            .into(image)
+                Picasso.get()
+                    .load(meal.getStrMealThumb())
+                    .resize(250, 250)
+                    .into(image)
 
-        instructions.movementMethod = ScrollingMovementMethod()
-        instructions.text = meal.getMealData()
+                instructions.movementMethod = ScrollingMovementMethod()
+                instructions.text = meal.getMealData()
+            }
+            "com.example.bonappetitkotlin.MealUser" -> {
+                name.text = meal.getStrMeal()
 
-        /*  val intent = intent
-          val meal = getIntent().getSerializableExtra("MealExtra") as Meal?
-          val name = findViewById<View>(R.id.txtMealName) as TextView
-          val image =
-              findViewById<View>(R.id.imgRecipeImage) as ImageView
-          val instructions =
-              findViewById<View>(R.id.txtMealInstructions) as TextView
-          name.setText(meal.getStrMeal())
-          Picasso.get()
-              .load(meal.getStrMealThumb())
-              .resize(250, 250)
-              .into(image)
-          instructions.movementMethod = ScrollingMovementMethod()
-          instructions.text = meal.toString()
-     */
+                Picasso.get()
+                    .load(R.drawable.spices)
+                    .resize(250,250)
+                    .into(image)
+
+                instructions.movementMethod = ScrollingMovementMethod()
+                instructions.text = meal.getMealData()
+            }
+        }
+    }
+
+    class MealType<T: Meal>(t: T){
+        fun getClassType(t: T): String {
+            return t::class.java.canonicalName as String
+        }
     }
 }
