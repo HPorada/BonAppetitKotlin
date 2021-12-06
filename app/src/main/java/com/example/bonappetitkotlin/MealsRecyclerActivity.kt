@@ -153,7 +153,12 @@ open class MealsRecyclerActivity : AppCompatActivity(), OnItemClickListener {
 
     open fun createRecipeList() {
         recipes.clear()
-        val file = getExternalFilesDir("SavedRecipes")
+
+        val folderName: String by lazy{
+            "SavedRecipes"
+        }
+
+        val file = getExternalFilesDir(folderName)
         val fileListing = file!!.listFiles()
         if (fileListing != null) {
             for (i in fileListing.indices) {

@@ -51,10 +51,8 @@ class MealActivity : AppCompatActivity() {
         }
     }
 
-    //generics
+    //generics, single expression function
     class MealType<T: Meal>(t: T){
-        fun getClassType(t: T): String {
-            return t::class.java.canonicalName as String
-        }
+        fun getClassType(t: T): String = t::class.java.canonicalName as String
     }
 }

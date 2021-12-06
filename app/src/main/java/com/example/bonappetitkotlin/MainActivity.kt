@@ -19,8 +19,11 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 // DONE:
+// Type check and automatic cast 1 -> MainActivity, response to String
 // When expression 1 -> MealsRecyclerActivity, onCreate()
-// String templates 1 -> url (MainActivity, createMealList())
+// Single-expression functions 1 -> MealActivity, MealType
+// String templates 1 -> url (MealsRecyclerActivity, createMealList())
+// Nested functions 2 -> MealsRecyclerActivity, createMealList() + makeRequest()
 // Lists or Sets 2 -> MealsRecyclerActivity (meals)
 // Interfaces 3 -> OnItemClickListener
 // Abstract classes 3 -> Meal
@@ -28,16 +31,15 @@ import org.json.JSONObject
 // Polymorphism 10 -> MealUser, MealAPI (getMealData)
 // Data classes 3 -> DataAPI
 // Exceptions 5 -> try/catch przy łączeniu z api
-// Null safety 5 -> konstruktor MealUser
-// Lambdas 10 -> response (MealsRecyclerActivity), sortowanie?
+// Null safety 5 -> konstruktor MealUser, compareTo (operator !!)
+// Lambdas 10 -> response (MainActivity, MealsRecyclerActivity), AddActivity, MealsRecyclerActivity
 // Elvis operator 1 -> konstruktor MealUser
+// Companion object 3 -> DataAPI, implementacja w MainActivity
+// Generics 8 -> MealActivity, MealType
 
 
 // TODO
-// Type check and automatic cast 1
-// Single-expression functions 1
 // Infix function 2
-// Nested functions 2
 // Operator overloading 3
 // Varargs 2
 // Spread operator 2
@@ -48,16 +50,13 @@ import org.json.JSONObject
 // Delegations 8
 // Observable properties 8
 // Destructuring declarations 3 (do map)
-
 // Save navigation operator 1
 // Object expressions 5
-// Companion object 3
-// Generics 8
+
 
 class MainActivity : AppCompatActivity() {
 
     var randomMeal: Meal = MealAPI()
-    val data = DataAPI()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,8 +69,14 @@ class MainActivity : AppCompatActivity() {
         val gson: Gson = GsonBuilder().setPrettyPrinting().create()
 
         val stringRequest: StringRequest =
-            StringRequest(Request.Method.GET, data.randomURL, { response ->
-                val dataMeal: DataMeal = gson.fromJson(response, DataMeal::class.java)
+            StringRequest(Request.Method.GET, DataAPI.create().randomURL, { response -> //lambda, companion object
+
+                var checkedResponse: String = ""
+
+                //type check and automatic cast
+                if (response is String) checkedResponse = response
+
+                val dataMeal: DataMeal = gson.fromJson(checkedResponse, DataMeal::class.java)
                 randomMeal = dataMeal.getMealsList()!![0]
                 randomRecipeName.text = randomMeal.getStrMeal()
                 Picasso.get()

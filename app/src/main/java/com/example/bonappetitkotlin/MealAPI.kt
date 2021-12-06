@@ -159,9 +159,6 @@ class MealAPI : Meal() {
     }
 
     override fun compareTo(other: Meal): Int {
-//        val name = this.strMeal?.compareTo(other.getStrMeal().toString())
-//        return name == 0 ?
-
         val name = strMeal!!.compareTo(other.getStrMeal().toString())
         return if (name == 0) strMeal.compareTo(other.getStrMeal().toString()) else name
     }
