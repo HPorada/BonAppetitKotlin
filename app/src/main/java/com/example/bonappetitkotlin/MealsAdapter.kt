@@ -1,6 +1,5 @@
 package com.example.bonappetitkotlin
 
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +16,7 @@ class MealsAdapter(
     class ViewHolder(
         itemView: View,
         onItemClickListener: OnItemClickListener
+    
     ) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var text: TextView
@@ -37,7 +37,7 @@ class MealsAdapter(
         }
     }
 
-    private val mMeal: List<Meal>
+    private val mMeal: ArrayList<Meal>
     private val mOnClickListener: OnItemClickListener
 
     override fun onCreateViewHolder(
@@ -71,7 +71,7 @@ class MealsAdapter(
     }
 
     init {
-        this.mMeal = mMeal as List<Meal>
+        this.mMeal = mMeal as ArrayList<Meal>
         this.mOnClickListener = mOnClickListener
     }
 }

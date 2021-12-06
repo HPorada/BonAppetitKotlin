@@ -21,9 +21,9 @@ class MealActivity : AppCompatActivity() {
         val typeM: MealType<Meal> = MealType(meal)
         val mealType = typeM.getClassType(meal)
 
-        var name = findViewById<TextView>(R.id.txtMealName)
-        var image = findViewById<ImageView>(R.id.imgRecipeImage)
-        var instructions = findViewById<TextView>(R.id.txtMealInstructions)
+        val name = findViewById<TextView>(R.id.txtMealName)
+        val image = findViewById<ImageView>(R.id.imgRecipeImage)
+        val instructions = findViewById<TextView>(R.id.txtMealInstructions)
 
         when(mealType){
             "com.example.bonappetitkotlin.MealAPI" -> {

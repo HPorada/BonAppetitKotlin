@@ -57,8 +57,7 @@ class MealAPI : Meal() {
     private val strSource: String? = null
     private val dateModified: String? = null
 
-
-    override fun getMealData(): String {
+    override fun getMealData(): String? {
         val str = StringBuilder()
 
         str.append("Ingredients: \n")
@@ -157,6 +156,14 @@ class MealAPI : Meal() {
 
     override fun getStrMealThumb(): String? {
         return strMealThumb
+    }
+
+    override fun compareTo(other: Meal): Int {
+//        val name = this.strMeal?.compareTo(other.getStrMeal().toString())
+//        return name == 0 ?
+
+        val name = strMeal!!.compareTo(other.getStrMeal().toString())
+        return if (name == 0) strMeal.compareTo(other.getStrMeal().toString()) else name
     }
 
 }

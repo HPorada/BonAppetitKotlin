@@ -121,71 +121,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-//    fun createMealList() {
-//        //mealsAPI.clear()
-//
-//        val alphabet = arrayOf(
-//            "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
-//            "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
-//        )
-//        for (s in alphabet) {
-//
-//            val url = "https://www.themealdb.com/api/json/v1/1/search.php?f=$s" //string templates
-//
-//            val queue2: RequestQueue = Volley.newRequestQueue(this)
-//            val gson: Gson = GsonBuilder().setPrettyPrinting().create()
-//
-//            val stringRequest = StringRequest(
-//                Request.Method.GET, url, { response ->
-//
-//                    if (response != "{\"meals\":null}") {
-//                        val strResp = response.toString()
-//                        val jObj: JSONObject = JSONObject(strResp)
-//                        val jArr: JSONArray = jObj.getJSONArray("meals")
-//
-//                        for (i in 0 until jArr.length()) {
-//                            val jInner: JSONObject = jArr.getJSONObject(i)
-//                            val newMeal: MealAPI =
-//                                gson.fromJson(jInner.toString(), MealAPI::class.java)
-//
-//                            mealsAPI.add(newMeal)
-//                        }
-//                    }
-//
-//
-//                    //processResponse(response)
-//
-//
-////                    if (response != "{\"meals\":null}") {
-////                        val dataMeal: DataMeal = gson.fromJson(response, DataMeal::class.java)
-////                        myList = dataMeal.getMealsList()!!
-////                        mealsAPI.addAll(myList)
-//////                        for (i in dataMeal.getMealsList()!!) {
-//////                            mealsAPI.add(i)
-//////                        }
-////                    }
-//                }, { Toast.makeText(this, "That didn't work", Toast.LENGTH_LONG).show() })
-//
-//            queue2.add(stringRequest)
-//        }
-//    }
-//
-////    val dataMeal: DataMeal = gson.fromJson(response, DataMeal::class.java)
-////    randomMeal = dataMeal.getMealsList()!![0]
-////    randomRecipeName.text = randomMeal.getStrMeal()
-////    Picasso.get()
-////    .load(randomMeal.getStrMealThumb())
-////    .into(randomRecipeImage)
-//
-//    fun processResponse(response: String) {
-//        //var myList = mutableListOf<Meal>()
-//
-//        if (response != "{\"meals\":null}") {
-//            val dataMeal: DataMeal = Gson().fromJson(response, DataMeal::class.java)
-//            val myList = dataMeal.getMealsList()!!
-//            mealsAPI.toMutableList().addAll(myList)
-//        }
-//    }
 
 //    fun createRecipeList() {
 ////        mealsUser.clear()
@@ -216,7 +151,6 @@ class MainActivity : AppCompatActivity() {
 ////        }
 //    }
 }
-
 
 //            val stringRequest: StringRequest = StringRequest(
 //                Request.Method.GET, url, Response.Listener { response ->
