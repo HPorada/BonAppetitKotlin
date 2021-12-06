@@ -19,20 +19,22 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 // DONE:
+// When expression 1 -> MealsRecyclerActivity, onCreate()
 // String templates 1 -> url (MainActivity, createMealList())
-// Lists or Sets 2 - MainActivity (meals)
-// Interfaces 3 - OnItemClickListener
-// Abstract classes 3 - Meal
-// Inheritance 8 - Meal -> MealUser, MealAPI
-// Polymorphism 10 - MealUser, MealAPI (getMealData)
-// Data classes 3 - DataAPI
+// Lists or Sets 2 -> MealsRecyclerActivity (meals)
+// Interfaces 3 -> OnItemClickListener
+// Abstract classes 3 -> Meal
+// Inheritance 8 -> Meal - MealUser, MealAPI
+// Polymorphism 10 -> MealUser, MealAPI (getMealData)
+// Data classes 3 -> DataAPI
 // Exceptions 5 -> try/catch przy łączeniu z api
+// Null safety 5 -> konstruktor MealUser
 // Lambdas 10 -> response (MealsRecyclerActivity), sortowanie?
+// Elvis operator 1 -> konstruktor MealUser
 
 
 // TODO
 // Type check and automatic cast 1
-// When expression 1
 // Single-expression functions 1
 // Infix function 2
 // Nested functions 2
@@ -46,20 +48,15 @@ import org.json.JSONObject
 // Delegations 8
 // Observable properties 8
 // Destructuring declarations 3 (do map)
-// Null safety 5 -> przy dodawaniu własnego przepisu, gdy niedodany jest tytuł, automatycznie "Przepis"
+
 // Save navigation operator 1
-// Elvis operator 1
 // Object expressions 5
 // Companion object 3
 // Generics 8
 
 class MainActivity : AppCompatActivity() {
 
-    var mealsAPI: MutableList<MealAPI> = mutableListOf()
     var randomMeal: Meal = MealAPI()
-    lateinit var jObject: JSONObject
-    var mealsUser: ArrayList<Meal> = ArrayList<Meal>()
-
     val data = DataAPI()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,10 +100,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onAllMealsClick(view: View?) {
-        //createMealList()
-
         val intent = Intent(this, MealsRecyclerActivity::class.java)
-        // intent.putExtra("MEALS", arrayListOf(mealsAPI))
+        intent.putExtra("isAll", true)
         startActivity(intent)
     }
 
@@ -116,8 +111,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onViewClick(view: View?) {
-        //createRecipeList()
         val intent = Intent(this, MealsRecyclerActivity::class.java)
+        intent.putExtra("isAll", false)
         startActivity(intent)
     }
 }

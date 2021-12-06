@@ -35,21 +35,31 @@ open class MealsRecyclerActivity : AppCompatActivity(), OnItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler_meals)
 
-        when (isNetworkAvailable()) {
-            true -> {
-                val data = readFromAsset()
+        val check = intent.getSerializableExtra("isAll") as Boolean
 
-                val dMeal: DataMeal = Gson().fromJson(data, DataMeal::class.java)
-                meals = dMeal.getMealsList()!!
+        when(check){
+            true -> {
+                when (isNetworkAvailable()) {
+                    true -> {
+                        val data = readFromAsset()
+
+                        val dMeal: DataMeal = Gson().fromJson(data, DataMeal::class.java)
+                        meals = dMeal.getMealsList()!!
+                    }
+                    false -> {
+                        meals = createMealList() as ArrayList<MealAPI>
+                    }
+                }
+
+                createRecipeList()
+                listAll = recipes + meals
             }
+
             false -> {
-                meals = createMealList() as ArrayList<MealAPI>
+                createRecipeList()
+                listAll = recipes
             }
         }
-
-        createRecipeList()
-
-        listAll = recipes + meals
 
         sort(listAll)
 
@@ -174,7 +184,6 @@ open class MealsRecyclerActivity : AppCompatActivity(), OnItemClickListener {
     open fun onSearchClick(view: View?) {
         val edt = findViewById<View>(R.id.edtSearch) as EditText
         val search = edt.text.toString()
-        //var meal = Meal()
 
         for (i in listAll.indices) {
             if (search == listAll[i].getStrMeal()) {

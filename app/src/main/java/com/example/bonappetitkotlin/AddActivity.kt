@@ -26,7 +26,7 @@ class AddActivity: AppCompatActivity() {
         val edt2: EditText = findViewById(R.id.edtInstructions) as EditText
         val body: String = edt2.text.toString()
 
-        if (name != null && !name.isEmpty() && body != null && !body.isEmpty()) {
+        if (name.isNotEmpty() && body.isNotEmpty()) {
 
             val myExternalFile = File(getExternalFilesDir(FOLDERNAME), name)
 

@@ -51,6 +51,7 @@ class MealActivity : AppCompatActivity() {
         }
     }
 
+    //generics
     class MealType<T: Meal>(t: T){
         fun getClassType(t: T): String {
             return t::class.java.canonicalName as String
