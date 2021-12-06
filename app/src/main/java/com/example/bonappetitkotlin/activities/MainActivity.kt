@@ -33,7 +33,7 @@ import com.squareup.picasso.Picasso
 // Polymorphism 10 -> MealUser, MealAPI (getMealData)
 // Data classes 3 -> DataAPI
 // Lazy properties 3 ->
-// Exceptions 5 -> try/catch przy łączeniu z api createMealList, tworzneiu listy przepisów użytkownika createRecipeList
+// Exceptions 5 -> try/catch przy łączeniu z api createMealList, tworzeniu listy przepisów użytkownika createRecipeList
 // Null safety 5 -> konstruktor MealUser, compareTo (operator !!)
 // Lambdas 10 -> response (MainActivity, MealsRecyclerActivity), AddActivity, MealsRecyclerActivity
 // Elvis operator 1 -> konstruktor MealUser
