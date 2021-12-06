@@ -1,4 +1,4 @@
-package com.example.bonappetitkotlin
+package com.example.bonappetitkotlin.activities
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.DefaultRetryPolicy
@@ -17,12 +18,20 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.bonappetitkotlin.*
+import com.example.bonappetitkotlin.adapter.MealsAdapter
+import com.example.bonappetitkotlin.adapter.OnItemClickListener
+import com.example.bonappetitkotlin.data.DataMeal
+import com.example.bonappetitkotlin.meal.Meal
+import com.example.bonappetitkotlin.meal.MealAPI
+import com.example.bonappetitkotlin.meal.MealUser
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.io.*
 import java.util.*
 import java.util.Collections.sort
 import kotlin.collections.ArrayList
+
 
 open class MealsRecyclerActivity : AppCompatActivity(), OnItemClickListener {
 
@@ -64,6 +73,13 @@ open class MealsRecyclerActivity : AppCompatActivity(), OnItemClickListener {
         sort(listAll)
 
         val rvMeals = findViewById<RecyclerView>(R.id.rvAreasList)
+        rvMeals.addItemDecoration(
+            DividerItemDecoration(
+                rvMeals.getContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
+
         rvMeals.setHasFixedSize(true)
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         val adapter: RecyclerView.Adapter<*> = MealsAdapter(listAll as ArrayList<Meal>, this)
@@ -160,6 +176,7 @@ open class MealsRecyclerActivity : AppCompatActivity(), OnItemClickListener {
 
         val file = getExternalFilesDir(folderName)
         val fileListing = file!!.listFiles()
+
         if (fileListing != null) {
             for (i in fileListing.indices) {
                 val str = StringBuilder()

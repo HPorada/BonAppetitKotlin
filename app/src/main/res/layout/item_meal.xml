@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
+    android:gravity="center_vertical"
     android:clickable="true">
 
     <ImageView
@@ -16,8 +17,9 @@
         android:id="@+id/txtListMeal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:clickable="false"
         android:text="Loading..."
-        android:textSize="16sp" />
+        android:textSize="25dp" />
 
 </LinearLayout>

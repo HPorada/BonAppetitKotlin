@@ -1,22 +1,24 @@
-package com.example.bonappetitkotlin
+package com.example.bonappetitkotlin.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.bonappetitkotlin.*
+import com.example.bonappetitkotlin.data.DataAPI
+import com.example.bonappetitkotlin.data.DataMeal
+import com.example.bonappetitkotlin.meal.Meal
+import com.example.bonappetitkotlin.meal.MealAPI
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.squareup.picasso.Picasso
-import org.json.JSONArray
-import org.json.JSONObject
 
 // DONE:
 // Type check and automatic cast 1 -> MainActivity, response to String
@@ -30,7 +32,8 @@ import org.json.JSONObject
 // Inheritance 8 -> Meal - MealUser, MealAPI
 // Polymorphism 10 -> MealUser, MealAPI (getMealData)
 // Data classes 3 -> DataAPI
-// Exceptions 5 -> try/catch przy łączeniu z api
+// Lazy properties 3 ->
+// Exceptions 5 -> try/catch przy łączeniu z api createMealList, tworzneiu listy przepisów użytkownika createRecipeList
 // Null safety 5 -> konstruktor MealUser, compareTo (operator !!)
 // Lambdas 10 -> response (MainActivity, MealsRecyclerActivity), AddActivity, MealsRecyclerActivity
 // Elvis operator 1 -> konstruktor MealUser
@@ -46,7 +49,6 @@ import org.json.JSONObject
 // Maps 2
 // Sealed classes 3
 // Extension functions 3
-// Lazy properties 3
 // Delegations 8
 // Observable properties 8
 // Destructuring declarations 3 (do map)

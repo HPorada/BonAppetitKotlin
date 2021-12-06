@@ -1,4 +1,4 @@
-package com.example.bonappetitkotlin
+package com.example.bonappetitkotlin.meal
 
 import java.io.Serializable
 

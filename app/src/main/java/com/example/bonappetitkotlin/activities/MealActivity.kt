@@ -1,11 +1,12 @@
-package com.example.bonappetitkotlin
+package com.example.bonappetitkotlin.activities
 
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.bonappetitkotlin.meal.Meal
+import com.example.bonappetitkotlin.R
 import com.squareup.picasso.Picasso
 
 class MealActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class MealActivity : AppCompatActivity() {
         val instructions = findViewById<TextView>(R.id.txtMealInstructions)
 
         when(mealType){
-            "com.example.bonappetitkotlin.MealAPI" -> {
+            "com.example.bonappetitkotlin.meal.MealAPI" -> {
                 name.text = meal.getStrMeal()
 
                 Picasso.get()
@@ -37,7 +38,7 @@ class MealActivity : AppCompatActivity() {
                 instructions.movementMethod = ScrollingMovementMethod()
                 instructions.text = meal.getMealData()
             }
-            "com.example.bonappetitkotlin.MealUser" -> {
+            "com.example.bonappetitkotlin.meal.MealUser" -> {
                 name.text = meal.getStrMeal()
 
                 Picasso.get()

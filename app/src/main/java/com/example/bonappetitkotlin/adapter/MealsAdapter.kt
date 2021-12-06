@@ -1,4 +1,4 @@
-package com.example.bonappetitkotlin
+package com.example.bonappetitkotlin.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bonappetitkotlin.R
+import com.example.bonappetitkotlin.meal.Meal
 import com.squareup.picasso.Picasso
 
 class MealsAdapter(
@@ -16,7 +18,7 @@ class MealsAdapter(
     class ViewHolder(
         itemView: View,
         onItemClickListener: OnItemClickListener
-    
+
     ) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var text: TextView
@@ -59,11 +61,19 @@ class MealsAdapter(
         val textView = holder.text
         textView.text = meal.getStrMeal()
 
-        val imageView = holder.image
-        Picasso.get()
-            .load(meal.getStrMealThumb())
-            .resize(100, 100)
-            .into(imageView)
+        if (meal.getStrMealThumb() == "spices") {
+            val imageView = holder.image
+            Picasso.get()
+                .load(R.drawable.spices)
+                .resize(100, 100)
+                .into(imageView)
+        } else {
+            val imageView = holder.image
+            Picasso.get()
+                .load(meal.getStrMealThumb())
+                .resize(100, 100)
+                .into(imageView)
+        }
     }
 
     override fun getItemCount(): Int {

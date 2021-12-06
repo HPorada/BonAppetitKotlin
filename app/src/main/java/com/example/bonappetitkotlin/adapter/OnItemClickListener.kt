@@ -1,4 +1,4 @@
-package com.example.bonappetitkotlin
+package com.example.bonappetitkotlin.adapter
 
 import android.view.View
 

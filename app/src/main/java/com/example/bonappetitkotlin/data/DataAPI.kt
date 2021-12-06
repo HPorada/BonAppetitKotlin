@@ -1,4 +1,4 @@
-package com.example.bonappetitkotlin
+package com.example.bonappetitkotlin.data
 
 data class DataAPI(
     val name: String = "The Meal DB",

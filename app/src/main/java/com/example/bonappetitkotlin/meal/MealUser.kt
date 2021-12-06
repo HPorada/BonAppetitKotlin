@@ -1,4 +1,4 @@
-package com.example.bonappetitkotlin
+package com.example.bonappetitkotlin.meal
 
 class MealUser(fileName: String?, text: String?) : Meal() {
 
@@ -15,7 +15,7 @@ class MealUser(fileName: String?, text: String?) : Meal() {
     }
 
     override fun getStrMealThumb(): String {
-        return R.drawable.spices.toString()
+        return "spices"
     }
 
     override fun compareTo(other: Meal): Int {
