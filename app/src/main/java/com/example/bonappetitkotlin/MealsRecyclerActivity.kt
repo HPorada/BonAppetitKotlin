@@ -7,6 +7,7 @@ import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +21,6 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.io.*
 import java.util.*
-import java.util.Arrays.sort
 import java.util.Collections.sort
 import kotlin.collections.ArrayList
 
@@ -169,5 +169,21 @@ open class MealsRecyclerActivity : AppCompatActivity(), OnItemClickListener {
             }
         }
         Log.d("recipes", recipes[0].getMealData().toString())
+    }
+
+    open fun onSearchClick(view: View?) {
+        val edt = findViewById<View>(R.id.edtSearch) as EditText
+        val search = edt.text.toString()
+        //var meal = Meal()
+
+        for (i in listAll.indices) {
+            if (search == listAll[i].getStrMeal()) {
+                val meal = listAll[i]
+
+                val intent = Intent(this, MealActivity::class.java)
+                intent.putExtra("MealExtra", meal)
+                startActivity(intent)
+            }
+        }
     }
 }

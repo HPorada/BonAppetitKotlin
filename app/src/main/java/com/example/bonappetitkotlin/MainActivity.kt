@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         //createMealList()
 
         val intent = Intent(this, MealsRecyclerActivity::class.java)
-       // intent.putExtra("MEALS", arrayListOf(mealsAPI))
+        // intent.putExtra("MEALS", arrayListOf(mealsAPI))
         startActivity(intent)
     }
 
@@ -120,66 +120,4 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, MealsRecyclerActivity::class.java)
         startActivity(intent)
     }
-
-
-//    fun createRecipeList() {
-////        mealsUser.clear()
-////        val file = getExternalFilesDir(AddActivity.FOLDERNAME)
-////        val fileListing = file!!.listFiles()
-////        if (fileListing != null) {
-////            for (i in fileListing.indices) {
-////                val str = StringBuilder()
-////                try {
-////                    BufferedReader(FileReader(fileListing[i])).use { bufr ->
-////                        val fileName = fileListing[i].name
-////                        var text: String?
-////                        while (bufr.readLine().also { text = it } != null) {
-////                            str.append(text)
-////                        }
-////                        val recipe = MealUser(fileName, str.toString())
-////                        mealsUser.add(recipe)
-////                    }
-////                } catch (e: FileNotFoundException) {
-////                    e.printStackTrace()
-////                    Toast.makeText(this, "File not found.", Toast.LENGTH_LONG).show()
-////                } catch (e: IOException) {
-////                    e.printStackTrace()
-////                    Toast.makeText(this, "Something went wrong. Try again.", Toast.LENGTH_LONG)
-////                        .show()
-////                }
-////            }
-////        }
-//    }
 }
-
-//            val stringRequest: StringRequest = StringRequest(
-//                Request.Method.GET, url, Response.Listener { response ->
-////                    Toast.makeText(this, response.toString(), Toast.LENGTH_LONG).show()
-////
-////                    val listOfStrings = Gson().fromJson(response, mutableListOf<String>().javaClass)
-////
-////                    for (j in 0 until listOfStrings.size) {
-////                        val asObject = Gson().fromJson(listOfStrings[j], MealAPI::class.java)
-////                        mealsAPI.add(asObject)
-////                    }
-//
-//                    try {
-//                        if (response != "{\"meals\":null}") {
-//                            jObject = JSONObject(response)
-//                            val jsonArray = jObject.getJSONArray("meals")
-//                            for (j in 0 until jsonArray.length()) {
-//                                val x = jsonArray.getJSONObject(j)
-//                                val meal: MealAPI = gson.fromJson(x.toString(), MealAPI::class.java)
-//
-//                                mealsAPI.add(meal)
-//                            }
-//                        }
-//                    } catch (e: JSONException) { //exception
-//                        e.printStackTrace();
-//                    }
-//                }, Response.ErrorListener {
-////                    fun onErrorResponse(error: VolleyError) {
-//                    Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show()
-//                    //}
-//                }
-//            )
