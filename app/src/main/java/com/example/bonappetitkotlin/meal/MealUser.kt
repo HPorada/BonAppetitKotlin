@@ -15,7 +15,7 @@ class MealUser(fileName: String?, text: String?) : Meal() {
     }
 
     override fun getStrMealThumb(): String {
-        return "spices"
+        return "dish"
     }
 
     override fun compareTo(other: Meal): Int {

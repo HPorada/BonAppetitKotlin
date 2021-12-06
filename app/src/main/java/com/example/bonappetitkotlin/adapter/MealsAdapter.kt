@@ -61,10 +61,10 @@ class MealsAdapter(
         val textView = holder.text
         textView.text = meal.getStrMeal()
 
-        if (meal.getStrMealThumb() == "spices") {
+        if (meal.getStrMealThumb() == "dish") {
             val imageView = holder.image
             Picasso.get()
-                .load(R.drawable.spices)
+                .load(R.drawable.dish)
                 .resize(100, 100)
                 .into(imageView)
         } else {

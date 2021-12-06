@@ -42,7 +42,7 @@ class MealActivity : AppCompatActivity() {
                 name.text = meal.getStrMeal()
 
                 Picasso.get()
-                    .load(R.drawable.spices)
+                    .load(R.drawable.dish)
                     .resize(250,250)
                     .into(image)
 
