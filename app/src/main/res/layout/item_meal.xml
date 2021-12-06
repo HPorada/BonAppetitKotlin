@@ -17,9 +17,10 @@
         android:id="@+id/txtListMeal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:clickable="false"
+        android:fontFamily="@font/fauna_one"
+        android:gravity="center"
         android:text="Loading..."
-        android:textSize="25dp" />
+        android:textSize="20dp" />
 
 </LinearLayout>
