@@ -22,9 +22,9 @@ import com.squareup.picasso.Picasso
 
 // DONE:
 // Type check and automatic cast 1 -> MainActivity, response to String
+// String templates 1 -> url (MealsRecyclerActivity, createMealList())
 // When expression 1 -> MealsRecyclerActivity, onCreate()
 // Single-expression functions 1 -> MealActivity, MealType
-// String templates 1 -> url (MealsRecyclerActivity, createMealList())
 // Nested functions 2 -> MealsRecyclerActivity, createMealList() + makeRequest()
 // Lists or Sets 2 -> MealsRecyclerActivity (meals)
 // Interfaces 3 -> OnItemClickListener
@@ -32,8 +32,8 @@ import com.squareup.picasso.Picasso
 // Inheritance 8 -> Meal - MealUser, MealAPI
 // Polymorphism 10 -> MealUser, MealAPI (getMealData)
 // Data classes 3 -> DataAPI
-// Lazy properties 3 ->
-// Exceptions 5 -> try/catch przy łączeniu z api createMealList, tworzeniu listy przepisów użytkownika createRecipeList
+// Lazy properties 3 -> AddActivity, FolderName,
+// Exceptions 5 -> MealsRecyclerActivity, try/catch przy łączeniu z api (createMealList) i tworzeniu listy przepisów użytkownika (createRecipeList)
 // Null safety 5 -> konstruktor MealUser, compareTo (operator !!)
 // Lambdas 10 -> response (MainActivity, MealsRecyclerActivity), AddActivity, MealsRecyclerActivity
 // Elvis operator 1 -> konstruktor MealUser
