@@ -48,17 +48,22 @@ open class MealsRecyclerActivity : AppCompatActivity(), OnItemClickListener {
 
         when(check){
             true -> {
-                when (isNetworkAvailable()) {
-                    true -> {
-                        val data = readFromAsset()
+//                when (isNetworkAvailable()) {
+//                    true -> {
+//                        val data = readFromAsset()
+//
+//                        val dMeal: DataMeal = Gson().fromJson(data, DataMeal::class.java)
+//                        meals = dMeal.getMealsList()!!
+//                    }
+//                    false -> {
+//                        meals = createMealList() as ArrayList<MealAPI>
+//                    }
+//                }
 
-                        val dMeal: DataMeal = Gson().fromJson(data, DataMeal::class.java)
-                        meals = dMeal.getMealsList()!!
-                    }
-                    false -> {
-                        meals = createMealList() as ArrayList<MealAPI>
-                    }
-                }
+                val data = readFromAsset()
+
+                val dMeal: DataMeal = Gson().fromJson(data, DataMeal::class.java)
+                meals = dMeal.getMealsList()!!
 
                 createRecipeList()
                 listAll = recipes + meals
