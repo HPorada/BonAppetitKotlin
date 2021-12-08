@@ -10,6 +10,7 @@ import com.example.bonappetitkotlin.R
 import com.example.bonappetitkotlin.meal.Meal
 import com.squareup.picasso.Picasso
 
+
 class MealsAdapter(
     mMeal: ArrayList<Meal>,
     mOnClickListener: OnItemClickListener

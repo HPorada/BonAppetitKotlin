@@ -41,21 +41,6 @@ import com.squareup.picasso.Picasso
 // Generics 8 -> MealActivity, MealType
 
 
-// TODO
-// Infix function 2
-// Operator overloading 3
-// Varargs 2
-// Spread operator 2
-// Maps 2
-// Sealed classes 3
-// Extension functions 3
-// Delegations 8
-// Observable properties 8
-// Destructuring declarations 3 (do map)
-// Save navigation operator 1
-// Object expressions 5
-
-
 class MainActivity : AppCompatActivity() {
 
     var randomMeal: Meal = MealAPI()
