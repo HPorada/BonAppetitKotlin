@@ -22,7 +22,7 @@ import com.squareup.picasso.Picasso
 
 // DONE:
 // Type check and automatic cast 1 -> MainActivity, response to String
-// String templates 1 -> url (MealsRecyclerActivity, createMealList())
+// String templates 1 -> url (MealsRecyclerActivity, createMealList()),
 // When expression 1 -> MealsRecyclerActivity, onCreate()
 // Single-expression functions 1 -> MealActivity, MealType
 // Nested functions 2 -> MealsRecyclerActivity, createMealList() + makeRequest()
